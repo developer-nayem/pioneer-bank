@@ -8,16 +8,24 @@
 
         const depositBtn = document.getElementById("addDeposit").addEventListener("click", function(){
         const depositNumber = getInputNumber("depositAmount");
-        updateSpanText("currentDeposit", depositNumber);
+        if(depositNumber > 0){
+            updateSpanText("currentDeposit", depositNumber);
+        }else{
+            alert("- Number cannot be given");
+        }
+        
         updateSpanText("currentBalance", depositNumber); 
     })
         // Add withDraw Button handle 
 
         const WithdrawBtn = document.getElementById("addWithdraw").addEventListener("click", function(){
         const withdrawNumber = getInputNumber("withdrawAmount");
-        updateSpanText("currentWithdraw", withdrawNumber);
+        if(withdrawNumber > 0){
+            updateSpanText("currentWithdraw", withdrawNumber);
+        }else{
+            alert("- Number cannot be given");
+        }
         updateSpanText("currentBalance", -1* withdrawNumber);
-
     });
        
     function getInputNumber(id){
@@ -28,10 +36,11 @@
     }
 
     function updateSpanText(id, addedNumber){{
-        const current = document.getElementById(id).innerText;
-        const currentNumber = parseFloat(current);
-        const totalAmount = addedNumber + currentNumber;
-        document.getElementById(id).innerText = totalAmount;
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const totalAmount = addedNumber + currentNumber;
+            document.getElementById(id).innerText = totalAmount;
+        
     }};
 
     // End
